@@ -13,6 +13,7 @@
     font-size: 15px;
     box-shadow: 1px 1px 8px rgba(165, 165, 165, 0.5);   
     user-select: none;
+    background-color: rgb(247, 247, 247);
 }
 
 .card:hover {
@@ -33,6 +34,7 @@
     text-align: center;
     padding-top: 10px;
     margin-bottom: 15px;
+    background-color: rgb(247, 247, 247);
 }
 
 .question-card img {

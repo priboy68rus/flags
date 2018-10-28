@@ -21,15 +21,19 @@ function Quiz(region, answer_type) {
     }
 
     this.check_ans = function(i) {
-        console.log(i);
-        console.log(this.questions[this.current_question]["answers"][i]);
+        var correct_j = -1;
+        for (var j = 0; j < this.answer_count; j++) {
+            if (this.questions[this.current_question]["answers"][j] == this.questions[this.current_question]["correct"]) {
+                correct_j = j;
+            }
+        }
         if (this.questions[this.current_question]["answers"][i] == this.questions[this.current_question]["correct"]) {
             this.go_next();
             this.score++;
-            return true;
+            return [true, correct_j];
         } else {
             this.go_next();
-            return false;
+            return [false, correct_j];
         }
     }
 
