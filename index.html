@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Flag Quiz</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="row header">
+            <div class="three columns">
+                <p id='info'>quiz</p>
+            </div>
+            <div class="four columns">
+                <select id="select-quiz-region" class="u-full-width">
+                    <option value="world">World</option>
+                    <option value="EU">Europe</option>
+                    <option value="AS">Asia</option>
+                    <option value="AF">Africa</option>
+                    <option value="NA">North America</option>
+                    <option value="SA">South America</option>
+                    <option value="OC">Oceania</option>
+                </select>
+            </div>
+            <div class="three columns">
+                <form id="answer-type-form">
+                    <div>
+                        <input type="radio" id="flag-radio" value="flag" name="answer-type" checked>
+                        <label for="flag-radio">Flag</label>
+                        
+                        <input type="radio" id="country-radio" value="country" name="answer-type">
+                        <label for="country-radio">Country</label>
+                    </div>
+                </form>
+            </div>
+            <div class="two columns">
+                <button class="u-full-width button-primary">Start</button>
+            </div>
+        </div>
+        <div class="row question-row">
+            <div class="question-card"></div>
+        </div>
+        <div class="answers-container">
+            <div class="row row1">
+                <div class="six columns card" id="ans0">answer 1</div>
+                <div class="six columns card" id="ans1">answer 2</div>
+            </div>
+            <div class="row row2">
+                <div class="six columns card" id="ans2">answer 3</div>
+                <div class="six columns card" id="ans3">answer 4</div>
+            </div>
+        </div>
+    </div>
+    
+    
+    <script src="data.js"></script>
+    <script src="utils.js"></script>
+    <script src="main.js"></script>
+    <script src="quiz.js"></script>
+</body>
+</html>
