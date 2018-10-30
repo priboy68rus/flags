@@ -50,3 +50,7 @@
     max-height: 150px;
     box-sizing: border-box;
 }
+
+.disabled-click {
+    pointer-events: none;
+}

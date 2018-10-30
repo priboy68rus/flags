@@ -48,12 +48,13 @@ function start_new_quiz() {
     }
     window.quiz = new Quiz(region, answer_type); 
     
-    fill_cards();
     update_info(true, -1);
+    fill_cards();
 }
 
 function fill_cards() {
     set_cards_grey();
+    enable_cards();
 
     if (window.quiz.get_question() == null) {
         question_card.innerHTML = "<p>Your score: " + window.quiz.score + "</p>";
@@ -82,6 +83,7 @@ function img_or_text(content) {
 function update_info(correct, j, correct_j) {
     info.textContent = "quiz " + window.quiz.current_question.toString() + "/" + window.quiz.length + " score: " + window.quiz.score.toString();
 
+    disable_cards();
     if (j >= 0) {
         if (correct) {
             answer_cards[j].style.backgroundColor = green;
@@ -103,5 +105,17 @@ function set_correct(j) {
 function set_cards_grey() {
     for (var i = 0; i < answer_cards.length; i++) {
         answer_cards[i].style.backgroundColor = grey;
+    }
+}
+
+function disable_cards() {
+    for (var i = 0; i < answer_cards.length; i++) {
+        answer_cards[i].classList.add('disabled-click');
+    }
+}
+
+function enable_cards() {
+    for (var i = 0; i < answer_cards.length; i++) {
+        answer_cards[i].classList.remove('disabled-click');
     }
 }
