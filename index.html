@@ -4,14 +4,16 @@
     <title>Flag Quiz</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css">
     <link rel="stylesheet" href="styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
     <div class="container">
-        <div class="row header">
+        <div class="row header-row">
             <div class="three columns">
-                <p id='info'>quiz</p>
+                <h5 id='info'>quiz</h5>
             </div>
-            <div class="four columns">
+            <div class="three columns">
+                <label for="select-quiz-region">Region</label>
                 <select id="select-quiz-region" class="u-full-width">
                     <option value="world">World</option>
                     <option value="EU">Europe</option>
@@ -22,38 +24,48 @@
                     <option value="OC">Oceania</option>
                 </select>
             </div>
-            <div class="three columns">
-                <form id="answer-type-form">
-                    <div>
-                        <input type="radio" id="flag-radio" value="flag" name="answer-type" checked>
-                        <label for="flag-radio">Flag</label>
-                        
-                        <input type="radio" id="country-radio" value="country" name="answer-type">
-                        <label for="country-radio">Country</label>
-                    </div>
-                </form>
-            </div>
+            
             <div class="two columns">
-                <button class="u-full-width button-primary">Start</button>
+                <label for="select-question-type">Question</label>
+                <select id="select-question-type" class="u-full-width">
+                    <option value="short" selected>Flag</option>
+                    <option value="country">Country</option>
+                    <option value="capital">Capital</option>
+                </select>
+            </div>
+            
+            <div class="two columns">
+                <label for="select-answer-type">Answer</label>
+                <select id="select-answer-type" class="u-full-width">
+                    <option value="short">Flag</option>
+                    <option value="country" selected>Country</option>
+                    <option value="capital">Capital</option>
+                </select>
+            </div>
+            
+            <div class="two columns">
+                <button class="u-full-width button-primary" id="start-button">Start</button>
             </div>
         </div>
-        <div class="row question-row">
-            <div class="question-card"></div>
-        </div>
-        <div class="answers-container">
-            <div class="row row1">
-                <div class="six columns card" id="ans0">answer 1</div>
-                <div class="six columns card" id="ans1">answer 2</div>
+        <div class="quiz-container">
+            <div class="row question-row">
+                <div class="question-card"></div>
             </div>
-            <div class="row row2">
-                <div class="six columns card" id="ans2">answer 3</div>
-                <div class="six columns card" id="ans3">answer 4</div>
+            <div class="answers-container">
+                <div class="row row1">
+                    <div class="six columns card" id="ans0">answer 1</div>
+                    <div class="six columns card" id="ans1">answer 2</div>
+                </div>
+                <div class="row row2">
+                    <div class="six columns card" id="ans2">answer 3</div>
+                    <div class="six columns card" id="ans3">answer 4</div>
+                </div>
             </div>
         </div>
     </div>
     
     
-    <script src="data.js"></script>
+    <script src="data_flags.js"></script>
     <script src="utils.js"></script>
     <script src="main.js"></script>
     <script src="quiz.js"></script>

@@ -1,8 +1,9 @@
-function Quiz(region, answer_type) {
+function Quiz(region, answer_type, question_type, data) {
     this.region = region;
     this.answer_type = answer_type;
+    this.question_type = question_type;
     this.answer_count = 4;
-    this.questions = get_questions(this.region, this.answer_type, this.answer_count);
+    this.questions = get_questions(this.region, this.answer_type, this.question_type, this.answer_count);
     this.current_question = 0;
     this.score = 0;
     this.length = this.questions.length;
@@ -39,42 +40,54 @@ function Quiz(region, answer_type) {
 
     //----------------------------------------
 
-    function get_questions(region, answer_type, answer_count) {
+    function get_questions(region, answer_type, question_type, answer_count) {
         var questions = prepare_questions(region, answer_count);
 
-        q = [];
-        var t;
+
+        var q = [];
+        var t = {};
         for (var i = 0; i < questions.length; i++) {
             t = {
-                "flag": [],
-                "country": []
+                "question": questions[i]["correct"][question_type],
+                "correct": questions[i]["correct"][answer_type],
+                "answers": questions[i]["answers"].map(x => x[answer_type])
             };
-            t["flag"].push(questions[i]["correct"]["short"]);
-            t["country"].push(questions[i]["correct"]["country"]);
-            for (var j = 0; j < questions[i]["wrong"].length; j++) {
-                t["flag"].push(questions[i]["wrong"][j]["short"]);
-                t["country"].push(questions[i]["wrong"][j]["country"]);
-            }
-            shuffle(t["flag"]);
-            shuffle(t["country"]);
-
-
-            if (answer_type == "flag") {
-                q.push({
-                    "question": questions[i]["correct"]["country"],
-                    "answers": t["flag"],
-                    "correct": questions[i]["correct"]["short"]
-                });
-            } else {
-                q.push({
-                    "question": questions[i]["correct"]["short"],
-                    "answers": t["country"],
-                    "correct": questions[i]["correct"]["country"]
-
-                });
-            }
-            
+            q.push(t);
         }
+
+        // q = [];
+        // var t;
+        // for (var i = 0; i < questions.length; i++) {
+        //     t = {
+        //         "short": [],
+        //         "country": []
+        //     };
+        //     t["short"].push(questions[i]["correct"]["short"]);
+        //     t["country"].push(questions[i]["correct"]["country"]);
+        //     for (var j = 0; j < questions[i]["wrong"].length; j++) {
+        //         t["short"].push(questions[i]["wrong"][j]["short"]);
+        //         t["country"].push(questions[i]["wrong"][j]["country"]);
+        //     }
+        //     shuffle(t["flag"]);
+        //     shuffle(t["country"]);
+
+
+        //     if (answer_type == "short") {
+        //         q.push({
+        //             "question": questions[i]["correct"]["country"],
+        //             "answers": t["flag"],
+        //             "correct": questions[i]["correct"]["short"]
+        //         });
+        //     } else {
+        //         q.push({
+        //             "question": questions[i]["correct"]["short"],
+        //             "answers": t["country"],
+        //             "correct": questions[i]["correct"]["country"]
+
+        //         });
+        //     }
+            
+        // }
 
         return q;
     }
@@ -84,11 +97,15 @@ function Quiz(region, answer_type) {
         shuffle(countries);
 
         var questions = [];
+        var answers = [];
         for (i = 0; i < countries.length; i++) {
+            answers = pick_wrong_answers(countries, countries[i], answers_count - 1);
+            answers.push(countries[i]);
+            shuffle(answers);
             questions.push(
                 {
                     "correct": countries[i],
-                    "wrong": pick_wrong_answers(countries, countries[i], answers_count - 1)
+                    "answers": answers
                 }
             );
         }

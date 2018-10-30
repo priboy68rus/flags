@@ -1,5 +1,6 @@
 const select_quiz_region = document.querySelector("#select-quiz-region");
-const flag_radio = document.querySelector("#flag-radio");
+const select_question_type = document.querySelector("#select-question-type");
+const select_answer_type = document.querySelector("#select-answer-type");
 const question_card = document.querySelector(".question-card");
 const answer_cards = document.querySelectorAll(".card");
 const info = document.querySelector("#info");
@@ -38,15 +39,11 @@ function check_answer(j) {
 
 
 function start_new_quiz() {
-    var answer_type = "";
     var region = select_quiz_region.value;
+    var answer_type = select_answer_type.value;
+    var question_type = select_question_type.value;
 
-    if (flag_radio.checked) {
-        answer_type = "flag";
-    } else {
-        answer_type = "country";
-    }
-    window.quiz = new Quiz(region, answer_type); 
+    window.quiz = new Quiz(region, answer_type, question_type, data_flags); 
     
     update_info(true, -1);
     fill_cards();
@@ -74,7 +71,7 @@ function fill_cards() {
 
 function img_or_text(content) {
     if (content.length > 2) {
-        return content;
+        return "<p>" + content + "</p>";
     } else {
         return "<img src=\"flags/" + content.toLowerCase() + ".png\"></img>"
     }
