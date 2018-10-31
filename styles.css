@@ -7,21 +7,27 @@
 }
 
 .card {
-    /* border: 1px solid rgb(165, 165, 165); */
     margin-bottom: 15px;
     border-radius: 4px;
-    padding-top: 12px;
     text-align: center;
     max-height: 170px;
-    min-height: 100px;
+    min-height: 90px;
     font-size: 30px;
     box-shadow: 1px 1px 8px rgba(165, 165, 165, 0.5);   
     user-select: none;
     background-color: rgb(247, 247, 247);
+    padding: 0;
 }
 
 .card p {
-    padding-top: 13px;
+    margin-top: 20px;
+}
+
+.card img {
+    max-height: 150px;
+    box-sizing: border-box;
+    margin-top: 12px;
+    margin-bottom: 12px;
 }
 
 .card:hover {
@@ -36,27 +42,27 @@
 .question-card  {
     box-shadow: 1px 1px 8px rgba(165, 165, 165, 0.5);   
     border-radius: 4px;
-    height: 170px;
-    
+    max-height: 170px;
+    min-height: 100px;
     font-size: 50px;
     text-align: center;
-    padding-top: 10px;
     margin-bottom: 15px;
     background-color: rgb(247, 247, 247);
+    padding: 0;
 }
 
 .question-card img {
     max-height: 150px;
     box-sizing: border-box;
+    margin-top: 10px;
+}
+
+.question-card p {
+    padding-top: 8px;
 }
 
 #answer-type-form label{
     display: inline-block;
-}
-
-.card img {
-    max-height: 150px;
-    box-sizing: border-box;
 }
 
 .disabled-click {
@@ -71,6 +77,8 @@
     margin-top: 29px;
 }
 
+
+/* mobile version */
 @media screen and (max-width: 800px) {
     .container {
         display: flex;
@@ -79,5 +87,28 @@
 
     .container div:first-child {
         order: 1;
+    }
+
+    .card:hover {
+        box-shadow: 1px 1px 8px rgba(165, 165, 165, 0.5);   
+    }
+
+    .card {
+        height: 100px;
+    }
+
+    .card img {
+        height: 90%;
+        margin-top: 5px;
+    }
+
+    .question-card {
+        font-size: 40px;
+        min-height: 60px;
+        font-weight: bold;
+    }
+
+    .question-card p {
+        padding-top: 0px;
     }
 }

@@ -69,14 +69,6 @@ function fill_cards() {
     answers_container.style.display = "block";
 }
 
-function img_or_text(content) {
-    if (content.length > 2) {
-        return "<p>" + content + "</p>";
-    } else {
-        return "<img src=\"flags/" + content.toLowerCase() + ".png\"></img>"
-    }
-}
-
 function update_info(correct, j, correct_j) {
     info.textContent = "quiz " + window.quiz.current_question.toString() + "/" + window.quiz.length + " score: " + window.quiz.score.toString();
 
@@ -92,27 +84,5 @@ function update_info(correct, j, correct_j) {
             setTimeout(fill_cards, 1000);
             setTimeout(set_correct, 400, correct_j);
         }
-    }
-}
-
-function set_correct(j) {
-    answer_cards[j].style.backgroundColor = green;
-}
-
-function set_cards_grey() {
-    for (var i = 0; i < answer_cards.length; i++) {
-        answer_cards[i].style.backgroundColor = grey;
-    }
-}
-
-function disable_cards() {
-    for (var i = 0; i < answer_cards.length; i++) {
-        answer_cards[i].classList.add('disabled-click');
-    }
-}
-
-function enable_cards() {
-    for (var i = 0; i < answer_cards.length; i++) {
-        answer_cards[i].classList.remove('disabled-click');
     }
 }
