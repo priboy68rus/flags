@@ -77,6 +77,16 @@
     margin-top: 29px;
 }
 
+#swap-icon {
+    margin-top: 34px;
+    margin-left: 4px;
+    cursor: pointer;
+}
+
+#swap-icon img {
+    height: 25px;
+}
+
 
 /* mobile version */
 @media screen and (max-width: 800px) {
@@ -110,5 +120,9 @@
 
     .question-card p {
         padding-top: 0px;
+    }
+
+    #swap-icon {
+        margin: 0;
     }
 }

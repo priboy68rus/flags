@@ -5,6 +5,7 @@ const question_card = document.querySelector(".question-card");
 const answer_cards = document.querySelectorAll(".card");
 const info = document.querySelector("#info");
 const answers_container = document.querySelector(".answers-container");
+const swap_icon = document.querySelector("#swap-icon");
 
 const grey = "rgb(247, 247, 247)";
 const green = "rgb(157, 247, 139)";
@@ -43,6 +44,12 @@ window.onload = function() {
             }
         }
     });
+
+    swap_icon.addEventListener('click', (e) => {
+        t = select_answer_type.value;
+        select_answer_type.value = select_question_type.value;
+        select_question_type.value = t;
+    })
 }
 
 
