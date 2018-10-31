@@ -23,6 +23,26 @@ window.onload = function() {
             }
         });
     }
+
+    select_answer_type.addEventListener('change', (e) => {
+        for (var i = 0; i < select_question_type.options.length; i++) {
+            option = select_question_type[i];
+            option.removeAttribute('disabled');
+            if (option.value == e.target.value) {
+                option.setAttribute('disabled', '');
+            }
+        }
+    });
+
+    select_question_type.addEventListener('change', (e) => {
+        for (var i = 0; i < select_answer_type.options.length; i++) {
+            option = select_answer_type[i];
+            option.removeAttribute('disabled');
+            if (option.value == e.target.value) {
+                option.setAttribute('disabled', '');
+            }
+        }
+    });
 }
 
 
