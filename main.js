@@ -46,9 +46,25 @@ window.onload = function() {
     });
 
     swap_icon.addEventListener('click', (e) => {
-        t = select_answer_type.value;
+        var old_answer = select_answer_type.value;
         select_answer_type.value = select_question_type.value;
-        select_question_type.value = t;
+        var old_question = select_question_type.value;
+        select_question_type.value = old_answer;
+
+        for (var i = 0; i < select_answer_type.options.length; i++) {
+            let question_option = select_question_type[i];
+            let answer_option = select_answer_type[i];
+            question_option.removeAttribute('disabled');
+            answer_option.removeAttribute('disabled');
+
+            if (question_option.value == old_question) {
+                question_option.setAttribute('disabled', '');
+            }
+
+            if (answer_option.value == old_answer) {
+                answer_option.setAttribute('disabled', '');
+            }
+        }
     })
 }
 
